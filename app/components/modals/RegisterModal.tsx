@@ -1,3 +1,4 @@
+'use client'
 import { useForm,FieldValues, SubmitHandler } from 'react-hook-form'
 import React from 'react'
 import Modal from './Modal'
