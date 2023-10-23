@@ -1,4 +1,5 @@
 import "../styles/globals.css";
+import LoginModal from "./components/modals/LoginModal";
 import RegisterModal from "./components/modals/RegisterModal";
 import MountedClient from "./components/MountedClient";
 import Navbar from "./components/navbar/Navbar";
@@ -10,6 +11,7 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
       <body>
       <ReduxProvider>
             <MountedClient>
+              <LoginModal />
               <RegisterModal/>
               <Navbar/>
             </MountedClient>

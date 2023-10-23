@@ -5,7 +5,8 @@ import Modal from './Modal'
 import Input from '../input/Input';
 import Button from '../buttons/Button';
 import {FcGoogle} from "react-icons/fc"
-import { useAppSelector } from '@/app/redux/hooks';
+import { useAppDispatch, useAppSelector } from '@/app/redux/hooks';
+import { registerModalFunc } from '@/app/redux/modalSlice';
 
 const RegisterModal = () => {
     const {register, handleSubmit, watch, formState:{errors}} =useForm<FieldValues>({
@@ -19,6 +20,7 @@ const RegisterModal = () => {
     const onSubmit: SubmitHandler<FieldValues> = (data) =>{
         console.log(data);
     } 
+    const dispatch = useAppDispatch();
     const bodyElement = (
         <div>
             <Input 
@@ -40,7 +42,7 @@ const RegisterModal = () => {
             <Input 
                 id='password'
                 type='password'
-                placeholder='password'
+                placeholder='Password'
                 register ={register}
                 errors={errors}
                 required
@@ -60,7 +62,7 @@ const RegisterModal = () => {
     )
   return (
     <div>
-        <Modal isOpen={registerModal} onSubmit={handleSubmit(onSubmit)} onClose={()=>{}} btnLabel="Register" title='Register' bodyElement={bodyElement} 
+        <Modal isOpen={registerModal} onSubmit={handleSubmit(onSubmit)} onClose={()=>{dispatch(registerModalFunc())}} btnLabel="Register" title='Register' bodyElement={bodyElement} 
         footerElement={footerElement}
         />
     </div>
