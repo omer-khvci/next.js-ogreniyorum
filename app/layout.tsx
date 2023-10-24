@@ -4,6 +4,7 @@ import RegisterModal from "./components/modals/RegisterModal";
 import MountedClient from "./components/MountedClient";
 import Navbar from "./components/navbar/Navbar";
 import ReduxProvider from "./providers/ReduxProvider";
+import ToastProvider from "./providers/ToastProvider";
 
 const RootLayout = ({ children }: { children: React.ReactNode }) => {
   return (
@@ -11,6 +12,7 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
       <body>
       <ReduxProvider>
             <MountedClient>
+              <ToastProvider />
               <LoginModal />
               <RegisterModal/>
               <Navbar/>

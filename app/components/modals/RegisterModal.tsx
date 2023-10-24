@@ -7,6 +7,8 @@ import Button from '../buttons/Button';
 import {FcGoogle} from "react-icons/fc"
 import { useAppDispatch, useAppSelector } from '@/app/redux/hooks';
 import { registerModalFunc } from '@/app/redux/modalSlice';
+import axios from 'axios';
+import { toast } from 'react-toastify';
 
 const RegisterModal = () => {
     const {register, handleSubmit, watch, formState:{errors}} =useForm<FieldValues>({
@@ -19,6 +21,15 @@ const RegisterModal = () => {
     const {registerModal} =useAppSelector(state => state.modal);
     const onSubmit: SubmitHandler<FieldValues> = (data) =>{
         console.log(data);
+        axios.post('/api/register',data)
+        .then(()=>{
+            dispatch(registerModalFunc())
+            toast.success('Register işlemi başarılı');
+        })
+        .catch((err: any)=>{
+            dispatch(registerModalFunc())
+            toast.error("Register işlemi başarısız");
+        })
     } 
     const dispatch = useAppDispatch();
     const bodyElement = (
