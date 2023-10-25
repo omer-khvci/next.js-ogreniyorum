@@ -22,7 +22,7 @@ const UserMenu = ({ user }: { user: User | any | undefined }) => {
       <GiHamburgerMenu size={25} />
       <Image
         src={
-            user.image ||
+            user?.image ||
           "https://upload.wikimedia.org/wikipedia/commons/9/99/Sample_User_Icon.png"
         }
         alt=""
