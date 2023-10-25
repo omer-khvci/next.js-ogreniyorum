@@ -1,6 +1,6 @@
 "use client";
 import { useAppDispatch } from "@/app/redux/hooks";
-import { loginModalFunc, registerModalFunc } from "@/app/redux/modalSlice";
+import { elementModalFunc, loginModalFunc, registerModalFunc } from "@/app/redux/modalSlice";
 import Image from "@/node_modules/next/image";
 import { useState } from "react";
 import { GiHamburgerMenu } from "react-icons/gi";
@@ -36,7 +36,7 @@ const UserMenu = ({ user }: { user: User | any | undefined }) => {
             <>
               <UserMenuItem
                 name="Create Listing"
-                onClick={() => {
+                onClick={() => {dispatch(elementModalFunc())
                 }}
               />
               <UserMenuItem

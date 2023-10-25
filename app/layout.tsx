@@ -1,5 +1,6 @@
 import "../styles/globals.css";
 import getCurrentUser from "./actions/getCurrentUser";
+import ElementModal from "./components/modals/ElementModal";
 import LoginModal from "./components/modals/LoginModal";
 import RegisterModal from "./components/modals/RegisterModal";
 import MountedClient from "./components/MountedClient";
@@ -17,6 +18,7 @@ export default async function RootLayout ({ children }: { children: React.ReactN
               <ToastProvider />
               <LoginModal />
               <RegisterModal/>
+              <ElementModal />
               <Navbar user={user}/>
             </MountedClient>
             {children}
