@@ -1,4 +1,5 @@
 import "../styles/globals.css";
+import getCurrentUser from "./actions/getCurrentUser";
 import LoginModal from "./components/modals/LoginModal";
 import RegisterModal from "./components/modals/RegisterModal";
 import MountedClient from "./components/MountedClient";
@@ -6,7 +7,8 @@ import Navbar from "./components/navbar/Navbar";
 import ReduxProvider from "./providers/ReduxProvider";
 import ToastProvider from "./providers/ToastProvider";
 
-const RootLayout = ({ children }: { children: React.ReactNode }) => {
+export default async function RootLayout ({ children }: { children: React.ReactNode }) {
+  const user = await getCurrentUser();
   return (
     <html lang="en">
       <body>
@@ -15,7 +17,7 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
               <ToastProvider />
               <LoginModal />
               <RegisterModal/>
-              <Navbar/>
+              <Navbar user={user}/>
             </MountedClient>
             {children}
             </ReduxProvider>
@@ -24,4 +26,3 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
   );
 };
 
-export default RootLayout;

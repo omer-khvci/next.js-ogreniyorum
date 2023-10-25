@@ -9,6 +9,7 @@ import { useAppDispatch, useAppSelector } from '@/app/redux/hooks';
 import { registerModalFunc } from '@/app/redux/modalSlice';
 import axios from 'axios';
 import { toast } from 'react-toastify';
+import { signIn } from 'next-auth/react';
 
 const RegisterModal = () => {
     const {register, handleSubmit, watch, formState:{errors}} =useForm<FieldValues>({
@@ -66,7 +67,7 @@ const RegisterModal = () => {
             btnLabel='Google ile Giriş'
             outline
             icon={FcGoogle}
-            onSubmit={()=>{}}
+            onSubmit={()=>{signIn('google')}}
         />
         </div>
 
